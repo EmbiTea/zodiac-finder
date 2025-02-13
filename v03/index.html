@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="This is where your description goes">
+    	<meta name="keywords" content="one, two, three">
+
+		<title>Zodiac Sign Info Finder</title>
+
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<h1>Zodiac Sign Information Finder (But It's No Longer Simple)</h1>
+
+		<!-- Roman Zodiac Signs-->
+		<section class="category">
+			<h2>Roman Zodiac Signs</h2>
+			<!-- (Roman) Search By Date -->
+			<section class="subcategory">
+				<!-- input -->
+				<section class="subsection">
+					<h3>Search By Date:</h3>
+					<label for="r-months">Month: </label>
+					<select name="" id="r-months" class="reset-select">
+						<option>---------</option>
+						<option>January</option>
+						<option>February</option>
+						<option>March</option>
+						<option>April</option>
+						<option>May</option>
+						<option>June</option>
+						<option>July</option>
+						<option>August</option>
+						<option>September</option>
+						<option>October</option>
+						<option>November</option>
+						<option>December</option>
+					</select>
+					<label for="r-days">Day: </label>
+					<input type="number" id="r-days" class="reset.numinput" min="1" max="31" placeholder="Number 1-31">
+					<button id="find-rSign">Show Results</button>
+				</section>
+				<!-- output -->
+				<section class="subsection">
+					<h4>Results for Search by Date:</h4>
+					<h5>Zodiac: <span id="print-rSign"></span></h5>
+					<h5>Zodiac-Cusp: <span id="print-rCusp"></span></h5>
+				</section>
+			</section>
+			<!-- (Roman) Search By Sign-->
+			<section class="subcategory">
+				<!-- input -->
+				<section class="subsection">
+					<h3>Search By Sign</h3>
+					<label for="r-signs">Roman Sign: </label>
+					<select name="" id="r-signs" class="reset-select">
+						<option>---------</option>
+						<option>Aries</option>
+						<option>Taurus</option>
+						<option>Gemini</option>
+						<option>Cancer</option>
+						<option>Leo</option>
+						<option>Virgo</option>
+						<option>Libra</option>
+						<option>Scorpio</option>
+						<option>Sagittarius</option>
+						<option>Capricorn</option>
+						<option>Aquarius</option>
+						<option>Pisces</option>
+					</select>
+					<button id="find-rDates">Show Results</button>
+				</section>
+				<!-- output -->
+				<section class="subsection">
+					<h4>Results for Search by Sign:</h4>
+					<h5>Dates: <span id="print-rDates"></span></h5>
+					<h5>Cusps:</h5>
+					<ul>
+						<li id="print-rcDates1"></li>
+						<li id="print-rcDates2"></li>
+					</ul>
+				</section>
+			</section>
+		</section>
+
+		<!-- Chinese Zodiac Signs-->
+		<section class="category">
+			<h2>Chinese Zodiac Signs</h2>
+			<!-- (Chinese) Search By Date -->
+			<section class="subcategory">
+				<!-- input -->
+				<section class="subsection">
+					<h3>Search By Date:</h3>
+					<label for="c-date">Date: </label>
+					<input type="date" id="c-date" class="reset.numinput">
+					<button id="find-cSign">Show Results</button>
+				</section>
+				<!-- output -->
+				<section class="subsection">
+					<h4>Results for Search by Date:</h4>
+					<h5>Zodiac: <span id="print-cSign"></span></h5>
+					<h5>Element: <span id="print-cElement"></span></h5>
+				</section>
+			</section>
+			<!-- (Chinese) Search By Sign -->
+			<section class="subcategory">
+				<!-- input -->
+				<section class="subsection">
+					<h3>Search By Sign</h3>
+					<label for="c-signs">Chinese Sign: </label>
+					<select name="" id="c-signs" class="reset-select">
+						<option>---------</option>
+						<option>Rat</option>
+						<option>Ox</option>
+						<option>Tiger</option>
+						<option>Rabbit</option>
+						<option>Dragon</option>
+						<option>Snake</option>
+						<option>Horse</option>
+						<option>Goat</option>
+						<option>Monkey</option>
+						<option>Rooster</option>
+						<option>Dog</option>
+						<option>Pig</option>
+					</select>
+					<button id="find-cDates">Show Results</button>
+				</section>
+				<!-- output -->
+				<section class="subsection">
+					<h4>Results for Search by Sign:</h4>
+					<h5>Dates: <span id="print-cDates"></span></h5>
+				</section>
+			</section>
+			<aside>
+				<p>*** Sign Variations in other Asian Countries: ***</p>
+				<ul>
+					<li>Cambodia = Dragon → Naga</li>
+					<li>Japan = Pig → Boar || Goat → Sheep</li>
+					<li>Korea = Goat → Ram/Sheep</li>
+					<li>Malaysia = Dragon → Naga || Rabbit → Mouse</li>
+					<li>Mongolia = Goat → Ram/Sheep</li>
+					<li>Northern China = Goat → Sheep (Southern China sticks with Goat)</li>
+					<li>Thailand = Dragon → Naga</li>
+					<li>Vietnam = Ox → Buffalo || Rabbit → Cat</li>
+				</ul>
+			</aside>
+		</section>
+
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>

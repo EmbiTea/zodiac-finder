@@ -10,11 +10,28 @@
 /******************************************
 /* LAYOUT
 /*******************************************/
-section > section {
+.subcategory, .subsection {
   width: 50%;
   float: left;
 }
 
+.category {
+  width: 100%;
+  height: auto;
+  clear: both;
+}
+
+.subcategory {
+  height: 200px;
+}
+
+section, aside {
+  border: 1px solid black;
+}
+
+input {
+  width: 25%;
+}
 
 /******************************************
 /* ADDITIONAL STYLES
