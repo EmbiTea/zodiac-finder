@@ -305,7 +305,7 @@ function findRCDateRanges2(sign) {
 
 function checkDate(month,day) {
     // Makes sure both month & day have a proper value
-    if( month===rMonthList[0] || day==="" || day > 31) {
+    if( month===rMonthList[0] || day===NaN || day > 31) {
         alert(`Error: No Proper Date Entered`)
         return false
     }
