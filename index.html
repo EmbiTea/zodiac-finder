@@ -57,8 +57,8 @@
 						<option>Dog</option>
 						<option>Pig</option>
 					</select>
-					<label for="c-types">Element (Optional): </label>
-					<select name="" id="c-types">
+					<label for="c-elements">Element (Optional): </label>
+					<select name="" id="c-elements">
 						<option>---------</option>
 						<option>Wood</option>
 						<option>Fire</option>
@@ -86,9 +86,10 @@
 			<section class="subcategory">
 				<!-- Roman Sign Result -->
 				<section class="subsection">
-					<h4>Results for Roman Zodiac:</h4>
-					<h5>Dates: <span id="print-rDates"></span></h5>
-					<h5>Cusps:</h5>
+					<h3>Roman Zodiac Results:</h3>
+					<h4>Date Range:</h4>
+					<span id="print-rDates"></span>
+					<h4>Cusps:</h4>
 					<ul>
 						<li id="print-rcDates1"></li>
 						<li id="print-rcDates2"></li>
@@ -96,8 +97,8 @@
 				</section>
 				<!-- Chinese Sign Result -->
 				<section class="subsection">
-					<h4>Results for Chinese Zodiac:</h4>
-					<h5>Years: <span id="print-cDates"></span></h5>
+					<h3>Chinese Zodiac Results:</h3>
+					<h4>Years: <span id="print-cDates"></span></h4>
 				</section>
 			</section>
 		</section>
@@ -108,9 +109,9 @@
 			<!-- Input -->
 			<section class="subcategory">
 				<section class="subsection">
-					<label for="z-date">Input Date: </label>
+					<label for="z-date">Input Date (in UTC): </label>
 					<input type="date" id="z-date">
-					<button id="print-zResults">Show Results</button>
+					<button id="find-signs">Show Results</button>
 				</section>
 				<aside class="subsection">
 					<p>*** Note: Year is irrelevant when searching for results on Roman Zodiacs as they primarily use the Month & Day only.</p>
@@ -123,14 +124,14 @@
 				<section class="subsection">
 					<h4>Search Results (Roman):</h4>
 					<h5>Zodiac: <span id="print-rSign"></span></h5>
-					<h5>Element: <span id="print-rType"></span></h5>
+					<h5>Element: <span id="print-rElement"></span></h5>
 					<h5>Zodiac-Cusp: <span id="print-rCusp"></span></h5>
 				</section>
 				<!-- Chinese Sign Results -->
 				<section class="subsection">
 					<h4>Search Results (Chinese):</h4>
 					<h5>Zodiac: <span id="print-cSign"></span></h5>
-					<h5>Element: <span id="print-cType"></span></h5>
+					<h5>Element: <span id="print-cElement"></span></h5>
 				</section>
 			</section>
 		</section>
