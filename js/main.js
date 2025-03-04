@@ -40,17 +40,17 @@ const cElementArray = Array.from(cElementList).map(el => el.value);
 // ---------------- DATA REFERENCE ARRAYS ------------------ //
 const rZodiac = {
 	signs: [
-		"Aries",		// [0] Mar. 21 - Apr. 19
-		"Taurus",		// [1] Apr. 20 - May 20
-		"Gemini",		// [2] May 21 - Jun. 21
-		"Cancer", 		// [3] Jun. 22 - Jul. 22
-		"Leo",			// [4] Jul. 23 - Aug. 22
-		"Virgo",		// [5] Aug. 23 - Sep. 22
-		"Libra",		// [6] Sep. 23 - Oct. 23
-		"Scorpio",		// [7] Oct. 24 - Nov. 21
-		"Sagittarius",	// [8] Nov 22. - Dec. 21
-		"Capricorn",	// [9] Dec. 22 - Jan. 19
-		"Aquarius",		// [10] Jan. 20 - Feb. 18
+		"Aries",		// [0]*	Mar. 21 - Apr. 19
+		"Taurus",		// [1]	Apr. 20 - May 20
+		"Gemini",		// [2]*	May 21 - Jun. 21
+		"Cancer", 		// [3]*	Jun. 22 - Jul. 22
+		"Leo",			// [4]*	Jul. 23 - Aug. 22
+		"Virgo",		// [5]*	Aug. 23 - Sep. 22
+		"Libra",		// [6]	Sep. 23 - Oct. 23
+		"Scorpio",		// [7]	Oct. 24 - Nov. 21
+		"Sagittarius",	// [8]	Nov 22. - Dec. 21
+		"Capricorn",	// [9]*	Dec. 22 - Jan. 19
+		"Aquarius",		// [10]*Jan. 20 - Feb. 18
 		"Pisces"		// [11] Feb. 19 - Mar. 20
 	],
 	elements: [
@@ -96,12 +96,7 @@ const cZodiac = {
 		"Earth",	//	[2] 8-9
 		"Metal",	//	[3] 0-1
 		"Water"		//	[4] 2-3
-	],
-	calcSign(year) {
-		// divide year by 12
-			// if year%12 === some # of a remainder && remainder === float integer => take the decimals, multiply by 12, round up/down accordingly, return resulting whole integer
-		// correspond resulting whole integer with animal 
-	}
+	]
 };
 // --------------------------------------------------------- //
 // --------------------------------------------------------- //
@@ -225,8 +220,8 @@ function printSigns() {
     document.querySelector("#print-rSign").innerText = rSign;
     document.querySelector("#print-rElement").innerText = findRElement(rSign);
     document.querySelector("#print-rCusp").innerText = checkIfCusp(userDate);
-    // document.querySelector("#print-cSign").innerText = findCSign(userDate);
-	// document.querySelector("#print-cElement").innerText = findCElement(userDate);
+    document.querySelector("#print-cSign").innerText = findCSign(userDate);
+	document.querySelector("#print-cElement").innerText = findCElement(userDate);
 }
 
 function findRSign(userDate) {
@@ -289,13 +284,38 @@ function findRSign(userDate) {
 
 function findRElement(sign) {
 	switch (sign) {
-		case (rZodiac.signs[8] || rZodiac.signs[4] || rZodiac.signs[0]):
+		// *** NOT WORKING: Capricorn / Aquarius / Aries / Gemini / Cancer / Leo / Virgo ***
+		// case (rZodiac.signs[8] || rZodiac.signs[4] || rZodiac.signs[0]):
+		// 	return rZodiac.elements[0];
+		// case (rZodiac.signs[1] || rZodiac.signs[5] || rZodiac.signs[9]):
+		// 	return rZodiac.elements[1];
+		// case (rZodiac.signs[6] || rZodiac.signs[10] || rZodiac.signs[2]):
+		// 	return rZodiac.elements[2];
+		// case (rZodiac.signs[11] || rZodiac.signs[7] || rZodiac.signs[3]):
+		// 	return rZodiac.elements[3];
+		case (rZodiac.signs[0]):
 			return rZodiac.elements[0];
-		case (rZodiac.signs[1] || rZodiac.signs[5] || rZodiac.signs[9]):
+		case (rZodiac.signs[4]):
+			return rZodiac.elements[0];
+		case (rZodiac.signs[8]):
+			return rZodiac.elements[0];
+		case (rZodiac.signs[1]):
 			return rZodiac.elements[1];
-		case (rZodiac.signs[6] || rZodiac.signs[10] || rZodiac.signs[2]):
+		case (rZodiac.signs[5]):
+			return rZodiac.elements[1];
+		case (rZodiac.signs[9]):
+			return rZodiac.elements[1];
+		case (rZodiac.signs[2]):
 			return rZodiac.elements[2];
-		case (rZodiac.signs[11] || rZodiac.signs[7] || rZodiac.signs[3]):
+		case (rZodiac.signs[6]):
+			return rZodiac.elements[2];
+		case (rZodiac.signs[10]):
+			return rZodiac.elements[2];
+		case (rZodiac.signs[3]):
+			return rZodiac.elements[3];
+		case (rZodiac.signs[7]):
+			return rZodiac.elements[3];
+		case (rZodiac.signs[11]):
 			return rZodiac.elements[3];
 		default:
 			return ``;
@@ -336,17 +356,70 @@ function checkIfCusp(userDate) {
 	}
 }
 
-// breakdown on functions needed AKA what i need:
-    // corresponds month & day to roman sign
-        // prints sign
-        // prints element corresponding to sign
-    // checks if month & day fall within a roman cusp range
-        // prints roman cusps (2)
-    // corresponds year to chinese sign
-        // prints sign (requires calculation on the year:)
-            // divide year by 12 (we are working with the remainders NOT the whole numbers!)
-                // if remainder === float integer:
-                    // take the DECIMALS => multiply by 12 => round up/down accordingly
-            // correspond resulting WHOLE INTEGER with animal (cZodiac.signs's indices already matched to answer (ex. 0 = monkey))
-    // corresponds LAST DIGIT OF BIRTH YEAR to chinese sign element
+function findCSign(userDate) {
+	// const month = userDate.getUTCMonth() + 1;
+	// const date = userDate.getUTCDate();
+	const year = userDate.getUTCFullYear();
+	const remainder = year%12;
+	// also needs a check to see if birthdate falls before the CNY of that year
+	switch (true) {
+		case (remainder === 0):
+			return cZodiac.signs[0];
+		case (remainder === 1):
+			return cZodiac.signs[1];
+		case (remainder === 2):
+			return cZodiac.signs[2];
+		case (remainder === 3):
+			return cZodiac.signs[3];
+		case (remainder === 4):
+			return cZodiac.signs[4];
+		case (remainder === 5):
+			return cZodiac.signs[5];
+		case (remainder === 6):
+			return cZodiac.signs[6];
+		case (remainder === 7):
+			return cZodiac.signs[7];
+		case (remainder === 8):
+			return cZodiac.signs[8];
+		case (remainder === 9):
+			return cZodiac.signs[9];
+		case (remainder === 10):
+			return cZodiac.signs[10];
+		case (remainder === 11):
+			return cZodiac.signs[11];
+	}
+}
 
+function findCElement(userDate){
+	const year = userDate.getUTCFullYear();
+	const lastDigit = Number(String(year).slice(-1));
+	switch (true) {
+		case (lastDigit === 4 || lastDigit === 5):
+			return cZodiac.elements[0];
+		case (lastDigit === 6|| lastDigit === 7):
+			return cZodiac.elements[1];
+		case (lastDigit === 8 || lastDigit === 9):
+			return cZodiac.elements[2];
+		case (lastDigit === 0 || lastDigit === 1):
+			return cZodiac.elements[3];
+		case (lastDigit === 2|| lastDigit === 3):
+			return cZodiac.elements[4];
+		default:
+			return ``;
+	}
+}
+
+// breakdown on functions needed AKA what i need:
+    // [DONE] corresponds month & day to roman sign
+        // [DONE] prints sign
+        // [REFINED] prints element corresponding to sign
+    // [DONE] checks if month & day fall within a roman cusp range -> prints roman cusps if applicable
+    // [PARTIAL] corresponds year to chinese sign
+        // prints sign (requires calculation on the year:)
+            // [DONE] year%12 (we're working with the REMAINDER!)
+                // [OBSOLETE (JS does it automatically)] if remainder === float integer:
+                    // take the DECIMALS ONLY-> multiply by 12 -> round up/down accordingly [Math.round()]
+            	// correspond resulting WHOLE INTEGER with animal (cZodiac.signs's indices already matched to answer (ex. 0 = monkey))
+			// also first checks if birthdate is within january-february for precision (will need to figure out how to implement a way to consider the date of CNY from that year)
+    // [DONE] corresponds LAST DIGIT OF BIRTH YEAR to chinese sign element
+	// print up to 10 years for "List By Sign"'s Chinese Zodiac Results
